@@ -1,0 +1,15 @@
+Name: sdk-client
+Summary: Mer SDK client tools
+Description:
+ Tools to support the Mer Qt Creator
+
+Version: 0.1
+Release: 1
+Group: Development Platform/Platform SDK
+License: GPLv2+
+Sources:
+    - sdk-client.tar.bz2
+Configure: none
+SetupOptions: -q -n src
+Files:
+  - "%{_bindir}/install-rpm"
