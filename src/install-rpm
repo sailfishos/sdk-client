@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# Copyright (C) 2012 David Greaves <david.greaves@jollamobile.com>
+# License GPL2+
+#
+# This script is used by QtCreator to install packages produced by the
+# Mer SDK.
+#
+
+ME=$0
+
+usage() {
+    cat <<EOF
+   $ME <pkg>
+
+   Installs (or upgrades) a package.
+
+   sudo must be enabled in passwd-less mode for the rpm command.
+EOF
+
+}
+assert_sudo_enabled() {
+    if sudo -n /bin/rpm --version >/dev/null 2>&1; then
+	return
+    else
+	echo "sudo did not work without a passwd for /usr/bin/rpm"
+	echo "$ME cannot run"
+	exit 1
+    fi
+}
+
+package_installed() {
+    rpm -q $1 >/dev/null 2>&1
+    return $?
+}
+
+upgrade_package() {
+    sudo -n /bin/rpm -U $1
+}
+
+install_package() {
+    sudo -n /bin/rpm -i $1
+}
+
+assert_sudo_enabled
+
+package_installed
+
+pkg=$1
+
+if [[ ! $pkg ]]; then
+    usage
+    exit 1
+fi
+
+if package_installed $pkg; then
+    upgrade_package $pkg
+else
+    install_package $pkg
+fi
