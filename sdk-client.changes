@@ -1,2 +1,5 @@
-* Sat Jan 12 2013 David Greaves <david@dgreaves.com> - 0.0.1-1
+* Wed Jan 16 2013 David Greaves <david@dgreaves.com> - 0.1-2
+- Depends on sudo
+
+* Sat Jan 12 2013 David Greaves <david@dgreaves.com> - 0.1-1
 - Provide a tool to support QtCreator installation of rpms

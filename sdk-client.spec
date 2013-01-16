@@ -10,11 +10,12 @@ Name:       sdk-client
 
 Summary:    Mer SDK client tools
 Version:    0.1
-Release:    1
+Release:    2
 Group:      Development Platform/Platform SDK
 License:    GPLv2+
 Source0:    sdk-client.tar.bz2
 Source100:  sdk-client.yaml
+Requires:   sudo
 
 %description
 Tools to support the Mer Qt Creator

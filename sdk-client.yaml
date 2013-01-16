@@ -4,11 +4,13 @@ Description:
  Tools to support the Mer Qt Creator
 
 Version: 0.1
-Release: 1
+Release: 2
 Group: Development Platform/Platform SDK
 License: GPLv2+
+Requires:
+  - sudo
 Sources:
-    - sdk-client.tar.bz2
+  - sdk-client.tar.bz2
 Configure: none
 SetupOptions: -q -n src
 Files:
