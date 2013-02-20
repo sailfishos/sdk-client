@@ -9,8 +9,8 @@ Name:       sdk-client
 # << macros
 
 Summary:    Mer SDK client tools
-Version:    0.1
-Release:    2
+Version:    0.2
+Release:    1
 Group:      Development Platform/Platform SDK
 License:    GPLv2+
 Source0:    sdk-client.tar.bz2
@@ -50,5 +50,6 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %{_bindir}/install-rpm
+%{_bindir}/sdk-shutdown
 # >> files
 # << files
