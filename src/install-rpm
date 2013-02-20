@@ -30,7 +30,7 @@ assert_sudo_enabled() {
 }
 
 install_package() {
-    sudo -n /usr/bin/zypper --non-interactive in $1
+    sudo -n /usr/bin/zypper --non-interactive in --force $1
 }
 
 assert_sudo_enabled
