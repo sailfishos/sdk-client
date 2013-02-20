@@ -2,7 +2,7 @@ NAME = sdk-client
 PREFIX = /usr
 BINDIR = $(PREFIX)/bin
 
-EXECUTABLES = src/install-rpm
+EXECUTABLES = src/install-rpm src/sdk-shutdown
 
 all:
 	@echo "No build needed"
