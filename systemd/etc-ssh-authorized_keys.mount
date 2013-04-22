@@ -1,0 +1,13 @@
+[Unit]
+Description=QtCreator managed sshd authorized_keys
+
+[Mount]
+What=ssh
+Where=/etc/ssh/authorized_keys
+Type=vboxsf
+Options=rw,exec,uid=0,gid=0,dev,fmode=555,dmode=555
+DirectoryMode=755
+TimeoutSec=1
+
+[Install]
+WantedBy=sysinit.target
