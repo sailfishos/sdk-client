@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# This script sets up the virtualbox internal vlan used to communicate with the MerSDK
+#
+# It is run by systemd once the configuration shared folder is mounted and it then sets
+# up the ethernet for connman; connman will immediately reconfigure the 2nd adapter
+DEVICES_XML=/etc/mersdk/share/devices.xml
+
+read_dom () {
+    local IFS=\>
+    read -d \< ENTITY CONTENT
+    local RET=$?
+    TAG_NAME=${ENTITY%% *}
+    ATTRIBUTES=${ENTITY#* }
+    return $RET
+}
+
+get_device() {
+    FOUND=
+    while read_dom; do
+	case $TAG_NAME in
+	    device )
+		[[ $FOUND ]] && break # found MAC and we're on the
+				      # next <device> so we're done
+				      # with the last <device>
+		eval local $ATTRIBUTES
+		NAME=$name
+		;;
+	    mac|index|subnet )
+		eval $TAG_NAME="$CONTENT"
+		;;
+	esac
+	if [[ $TAG_NAME == "mac" ]]; then
+	    cat /sys/class/net/eth?/address | grep -i $mac >/dev/null && FOUND=1
+	fi
+    done
+    if [[ $FOUND ]]; then
+	MAC=$mac
+	INDEX=$index
+	SUBNET=$subnet
+	return 0
+    fi
+    return 1
+}
+
+if get_device < $DEVICES_XML; then
+    echo "Setting up SDK emulator internal LAN to $subnet.$index"
+    MAC2=$(cat /sys/class/net/eth?/address | grep -iv $MAC)
+    cat <<EOF > /var/lib/connman/emulator.config
+[global]
+Name = SDK Emulator
+Description = SDK Emulator Configuration
+
+[service_sailfishsdk_ethernet]
+Type = ethernet
+IPv4 = $SUBNET.$INDEX/24/$SUBNET.254
+IPv6 = off
+MAC = $MAC
+
+[service_nat_ethernet]
+Type = ethernet
+IPv4 = dhcp
+IPv6 = off
+MAC = $MAC2
+
+EOF
+    exit 0
+else
+    echo "No <device> found with matching MAC"
+    exit 1
+fi
+
