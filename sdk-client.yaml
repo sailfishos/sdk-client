@@ -1,12 +1,11 @@
 Name: sdk-client
 Summary: Mer SDK client tools
-Description:
- Tools to support the Mer Qt Creator
-Version: 0.2
+Description: Tools to support the Mer Qt Creator
+Version: 0.3
 Release: 1
 Group: Development Platform/Platform SDK
 License: GPLv2+
-URL:        https://github.com/mer-tools/sdk-setup
+URL: https://github.com/mer-tools/sdk-setup
 BuildArch: noarch
 Requires:
   - sudo
@@ -17,14 +16,13 @@ PkgBR:
 Configure: none
 SetupOptions: -q -n src
 Files:
-  - "%{_bindir}/install-rpm"
-  - "%{_bindir}/sdk-shutdown"
+  - '%{_bindir}/install-rpm'
+  - '%{_bindir}/sdk-shutdown'
 SubPackages:
   - Name: emul
     Summary: Mer SDK files for the Emulator VM
-    Description:
-      Contains the supporting configs for Emulator VMs to setup shared folders and
-      the internal LAN for the SDK build engine
+    Description: Contains the supporting configs for Emulator VMs to setup shared
+      folders and the internal LAN for the SDK build engine
     Group: System/Base
     Conflicts:
       - sdk-vm
@@ -40,3 +38,4 @@ SubPackages:
       - '%{_unitdir}/sdk-emulan.service'
       - '%{_unitdir}/etc-mersdk-share.mount'
       - '%{_unitdir}/etc-ssh-authorized_keys.mount'
+Patches: []
