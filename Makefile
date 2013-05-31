@@ -1,10 +1,10 @@
 NAME = sdk-client
 PREFIX = /usr
 BINDIR = $(PREFIX)/bin
-CONFDIR = $(PREFIX)/etc
-SYSTEMDDIR = $(PREFIX)/lib/systemd/system
+CONFDIR = /etc
+UNITDIR = /lib/systemd/system
 
-EXECUTABLES = src/install-rpm src/sdk-shutdown
+EXECUTABLES = src/install-rpm src/sdk-shutdown src/sdk-setup-emulan
 CONF = etc/*
 
 all:
@@ -16,13 +16,14 @@ install:
 	cp -r $(EXECUTABLES) $(DESTDIR)$(BINDIR)
 
 	mkdir -p $(DESTDIR)$(CONFDIR)
-	cp -r $(EXECUTABLES) $(DESTDIR)$(BINDIR)
-	mkdir -p $(DESTDIR)$(SYSTEMDDIR)/sysinit.target.wants/
-	cp -r systemd/etc-ssh-authorized_keys.mount $(DESTDIR)$(SYSTEMDDIR)
-	ln -s ../etc-ssh-authorized_keys.mount $(DESTDIR)$(SYSTEMDDIR)/sysinit.target.wants/
+	cp -r $(CONF) $(DESTDIR)$(CONFDIR)
 
 	mkdir -p $(DESTDIR)/opt/sdk/
-	chown -R $DEVICEUSER /opt/sdk
+#	chown -R $(DEVICEUSER) nemo /opt/sdk
+
+#	sdk-client-emul
+	mkdir -p $(DESTDIR)$(UNITDIR)
+	cp --no-dereference systemd/* $(DESTDIR)/$(UNITDIR)/
 
 
 .PHONY: all install
