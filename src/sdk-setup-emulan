@@ -46,6 +46,7 @@ get_device() {
 if get_device < $DEVICES_XML; then
     echo "Setting up SDK emulator internal LAN to $subnet.$index"
     MAC2=$(cat /sys/class/net/eth?/address | grep -iv $MAC)
+    mkdir -p /var/lib/connman
     cat <<EOF > /var/lib/connman/emulator.config
 [global]
 Name = SDK Emulator
