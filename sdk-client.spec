@@ -15,9 +15,11 @@ Group:      Development Platform/Platform SDK
 License:    GPLv2+
 BuildArch:  noarch
 URL:        https://github.com/mer-tools/sdk-setup
-Source0:    sdk-client.tar.bz2
+Source0:    sdk-client-%{version}.tar.bz2
 Source100:  sdk-client.yaml
 Requires:   sudo
+Requires:   openssh-server
+Requires:   rsync
 BuildRequires:  systemd
 
 %description
@@ -81,7 +83,6 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %{_bindir}/install-rpm
-%{_bindir}/sdk-shutdown
 # >> files
 # << files
 

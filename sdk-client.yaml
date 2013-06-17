@@ -9,15 +9,16 @@ URL: https://github.com/mer-tools/sdk-setup
 BuildArch: noarch
 Requires:
   - sudo
+  - openssh-server
+  - rsync
 Sources:
-  - sdk-client.tar.bz2
+  - sdk-client-%{version}.tar.bz2
 PkgBR:
   - systemd
 Configure: none
 SetupOptions: -q -n src
 Files:
   - '%{_bindir}/install-rpm'
-  - '%{_bindir}/sdk-shutdown'
 SubPackages:
   - Name: emul
     Summary: Mer SDK files for the Emulator VM
