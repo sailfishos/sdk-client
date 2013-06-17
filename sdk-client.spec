@@ -9,13 +9,13 @@ Name:       sdk-client
 # << macros
 
 Summary:    Mer SDK client tools
-Version:    0.3
+Version:    0.4
 Release:    1
 Group:      Development Platform/Platform SDK
 License:    GPLv2+
 BuildArch:  noarch
 URL:        https://github.com/mer-tools/sdk-setup
-Source0:    sdk-client-%{version}.tar.bz2
+Source0:    sdk-client-%{version}.tar.gz
 Source100:  sdk-client.yaml
 Requires:   sudo
 Requires:   openssh-server
