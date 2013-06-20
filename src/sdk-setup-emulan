@@ -67,7 +67,20 @@ MAC = $MAC2
 EOF
     exit 0
 else
-    echo "No <device> found with matching MAC"
+    MAC2=$(cat /sys/class/net/eth?/address | grep -iv 5a:11)
+    mkdir -p /var/lib/connman
+    cat <<EOF > /var/lib/connman/emulator.config
+[global]
+Name = SDK Emulator
+Description = SDK Emulator Configuration
+
+[service_nat_ethernet]
+Type = ethernet
+IPv4 = dhcp
+IPv6 = off
+MAC = $MAC2
+
+EOF
+    echo "No <device> found with matching MAC - setup fallback with dhcp/NAT only on $MAC2"
     exit 1
 fi
-
