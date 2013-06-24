@@ -8,7 +8,7 @@
 
 ME=$0
 
-sudo -n /usr/sbin/shutdown && exit
+sudo -n /usr/sbin/poweroff && exit
 
 echo "sudo did not work without a passwd for /usr/sbin/shutdown"
 echo "$ME cannot run"
