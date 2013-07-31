@@ -8,7 +8,7 @@ Where=/etc/mersdk/share
 Type=vboxsf
 Options=rw,exec,uid=0,gid=0,dev,fmode=755,dmode=755
 DirectoryMode=755
-TimeoutSec=10
+TimeoutSec=90
 
 [Install]
 WantedBy=basic.target
