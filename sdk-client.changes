@@ -1,3 +1,6 @@
+* Wed Jul 31 2013 David Greaves <david@dgreaves.com> - 0.7-1
+- [systemd] Increase mount timeout to 90s - windows can be very slow mounting shared folders
+
 * Mon Jun 24 2013 David Greaves <david@dgreaves.com> - 0.6-1
 - [sdk-shutdown] Use poweroff
 

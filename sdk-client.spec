@@ -9,7 +9,7 @@ Name:       sdk-client
 # << macros
 
 Summary:    Mer SDK client tools
-Version:    0.6
+Version:    0.7
 Release:    1
 Group:      Development Platform/Platform SDK
 License:    GPLv2+
