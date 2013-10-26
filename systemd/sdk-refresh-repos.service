@@ -1,0 +1,13 @@
+[Unit]
+Description=Refresh zypper repositories, as pkcon does not do it automatically.
+After=connman.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+ExecStartPost=/usr/bin/pkcon refresh
+
+[Install]
+WantedBy=multi-user.target
+
