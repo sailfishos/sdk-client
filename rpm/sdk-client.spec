@@ -35,7 +35,7 @@ Requires(post): /bin/ln
 Conflicts:  sdk-vm
 
 %description emul
-Contains the supporting configs for Emulator VMs to setup shared folders and the internal LAN for the SDK build engine
+Contains the supporting configs for Emulator VMs to work with MerSDK.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -64,6 +64,7 @@ rm -rf %{buildroot}
 %systemd_post etc-mersdk-share.mount
 %systemd_post etc-ssh-authorized_keys.mount
 %systemd_post sdk-emulan.service
+%systemd_post sdk-refresh-repos.service
 # << install post
 
 %preun
@@ -72,6 +73,7 @@ rm -rf %{buildroot}
 %systemd_preun etc-mersdk-share.mount
 %systemd_preun etc-ssh-authorized_keys.mount
 %systemd_preun sdk-emulan.service
+%systemd_preun sdk-refresh-repos.service
 # << preun
 
 %postun
@@ -92,6 +94,7 @@ rm -rf %{buildroot}
 %{_bindir}/sdk-shutdown
 %{_bindir}/sdk-setup-emulan
 %{_unitdir}/sdk-emulan.service
+%{_unitdir}/sdk-refresh-repos.service
 %{_unitdir}/etc-mersdk-share.mount
 %{_unitdir}/etc-ssh-authorized_keys.mount
 # >> files emul
