@@ -37,6 +37,7 @@ SubPackages:
       - '%{_bindir}/sdk-shutdown'
       - '%{_bindir}/sdk-setup-emulan'
       - '%{_unitdir}/sdk-emulan.service'
+      - '%{_unitdir}/sdk-refresh-repos.service'
       - '%{_unitdir}/etc-mersdk-share.mount'
       - '%{_unitdir}/etc-ssh-authorized_keys.mount'
 Patches: []
