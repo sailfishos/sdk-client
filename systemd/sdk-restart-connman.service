@@ -1,0 +1,15 @@
+# This is a workaround for some connman/connectionagent problem
+# This should be removed after update6
+
+[Unit]
+Description=Restart connman to ensure eth1 gets an IP address
+After=init-done.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/bin/sleep 5
+ExecStart=/bin/systemctl restart connman.service
+
+[Install]
+WantedBy=graphical.target
