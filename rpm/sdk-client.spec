@@ -9,7 +9,7 @@ Name:       sdk-client
 # << macros
 
 Summary:    Mer SDK client tools
-Version:    0.7
+Version:    0.8
 Release:    1
 Group:      Development Platform/Platform SDK
 License:    GPLv2+
@@ -35,7 +35,7 @@ Requires(post): /bin/ln
 Conflicts:  sdk-vm
 
 %description emul
-Contains the supporting configs for Emulator VMs to work with MerSDK.
+Contains the supporting configs for Emulator VMs to setup shared folders and the internal LAN for the SDK build engine
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -48,7 +48,7 @@ Contains the supporting configs for Emulator VMs to work with MerSDK.
 # << build pre
 
 
-make %{?jobs:-j%jobs}
+make %{?_smp_mflags}
 
 # >> build post
 # << build post
@@ -65,6 +65,7 @@ rm -rf %{buildroot}
 %systemd_post etc-ssh-authorized_keys.mount
 %systemd_post sdk-emulan.service
 %systemd_post sdk-refresh-repos.service
+%systemd_post sdk-restart-connman.service
 # << install post
 
 %preun
@@ -97,5 +98,6 @@ rm -rf %{buildroot}
 %{_unitdir}/sdk-refresh-repos.service
 %{_unitdir}/etc-mersdk-share.mount
 %{_unitdir}/etc-ssh-authorized_keys.mount
+%{_unitdir}/sdk-restart-connman.service
 # >> files emul
 # << files emul
