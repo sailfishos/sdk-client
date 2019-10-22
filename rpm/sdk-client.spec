@@ -32,6 +32,7 @@ Requires:   %{name} = %{version}-%{release}
 Requires:   connman >= 1.14
 Requires:   virtualbox-guest-tools
 Requires(post): /bin/ln
+Requires(post): systemd
 Conflicts:  sdk-vm
 
 %description emul
@@ -66,6 +67,7 @@ rm -rf %{buildroot}
 %systemd_post sdk-emulan.service
 %systemd_post sdk-refresh-repos.service
 %systemd_post sdk-restart-connman.service
+%systemd_post sshd.socket
 # << install post
 
 %preun
