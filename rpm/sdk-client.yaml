@@ -1,11 +1,11 @@
 Name: sdk-client
-Summary: Mer SDK client tools
-Description: Tools to support the Mer Qt Creator
+Summary: Sailfish OS SDK client tools
+Description: Tools to support the Sailfish OS Qt Creator
 Version: 0.8
 Release: 1
 Group: Development Platform/Platform SDK
 License: GPLv2+
-URL: https://github.com/mer-tools/sdk-setup
+URL: https://github.com/sailfishos/sdk-client
 BuildArch: noarch
 Requires:
   - sudo
@@ -21,7 +21,7 @@ Files:
   - '%{_bindir}/install-rpm'
 SubPackages:
   - Name: emul
-    Summary: Mer SDK files for the Emulator VM
+    Summary: Sailfish OS SDK files for the Emulator VM
     Description: Contains the supporting configs for Emulator VMs to setup shared
       folders and the internal LAN for the SDK build engine
     Group: System/Base
@@ -29,6 +29,7 @@ SubPackages:
       - sdk-vm
     RequiresPost:
       - /bin/ln
+      - systemd
     Requires:
       - connman >= 1.14
       - virtualbox-guest-tools
