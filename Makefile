@@ -2,7 +2,7 @@ NAME = sdk-client
 PREFIX = /usr
 BINDIR = $(PREFIX)/bin
 CONFDIR = /etc
-UNITDIR = /lib/systemd/system
+UNITDIR = $(PREFIX)/lib/systemd/system
 
 EXECUTABLES = src/install-rpm src/sdk-shutdown src/sdk-setup-emulan
 CONF = etc/*
