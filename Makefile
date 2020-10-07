@@ -4,7 +4,7 @@ BINDIR = $(PREFIX)/bin
 CONFDIR = /etc
 UNITDIR = $(PREFIX)/lib/systemd/system
 
-EXECUTABLES = src/install-rpm src/sdk-shutdown src/sdk-setup-emulan
+EXECUTABLES = src/sdk-shutdown src/sdk-setup-emulan
 CONF = etc/*
 
 all:
