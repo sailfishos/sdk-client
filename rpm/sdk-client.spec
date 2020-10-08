@@ -7,9 +7,6 @@ License:    GPLv2+
 BuildArch:  noarch
 URL:        https://github.com/sailfishos/sdk-client
 Source0:    %{name}-%{version}.tar.bz2
-Requires:   sudo
-Requires:   openssh-server
-Requires:   rsync
 BuildRequires:  systemd
 
 %description
@@ -17,7 +14,7 @@ Tools to support the Sailfish OS Qt Creator
 
 %package emul
 Summary:    Sailfish OS SDK files for the Emulator VM
-Requires:   %{name} = %{version}-%{release}
+Requires:   sudo
 Requires:   connman >= 1.14
 Requires:   virtualbox-guest-tools
 Requires(post): /bin/ln
@@ -59,7 +56,6 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/install-rpm
 
 %files emul
 %defattr(-,root,root,-)
