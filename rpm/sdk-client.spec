@@ -14,7 +14,6 @@ Tools to support the Sailfish OS Qt Creator
 
 %package emul
 Summary:    Sailfish OS SDK files for the Emulator VM
-Requires:   %{name} = %{version}-%{release}
 Requires:   sudo
 Requires:   connman >= 1.14
 Requires:   virtualbox-guest-tools
