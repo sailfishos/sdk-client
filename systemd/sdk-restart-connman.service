@@ -9,7 +9,7 @@ After=init-done.service
 Type=oneshot
 RemainAfterExit=yes
 ExecStartPre=/bin/sleep 5
-ExecStart=/bin/systemctl restart connman.service
+ExecStart=/usr/bin/systemctl restart connman.service
 
 [Install]
 WantedBy=graphical.target
