@@ -7,11 +7,13 @@
 DEVICES_XML=/etc/mersdk/share/devices.xml
 
 read_dom () {
-    local IFS=\>
-    read -d \< ENTITY CONTENT
+    read -d \< ENTITY
     local RET=$?
     TAG_NAME=${ENTITY%% *}
+    TAG_NAME=${TAG_NAME%%>*}
     ATTRIBUTES=${ENTITY#* }
+    ATTRIBUTES=${ATTRIBUTES%%>*}
+    CONTENT=${ENTITY#*>}
     return $RET
 }
 
@@ -30,7 +32,7 @@ get_device() {
 		eval $TAG_NAME="$CONTENT"
 		;;
 	esac
-	if [[ $TAG_NAME == "mac" ]]; then
+	if [[ $TAG_NAME && $TAG_NAME == "mac" ]]; then
 	    cat /sys/class/net/eth?/address | grep -i $mac >/dev/null && FOUND=1
 	fi
     done

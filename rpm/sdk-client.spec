@@ -19,6 +19,7 @@ Requires:   connman >= 1.14
 Requires:   virtualbox-guest-tools
 Requires(post): /bin/ln
 Requires(post): systemd
+Requires(post): openssh-server
 Conflicts:  sdk-vm
 
 %description emul
