@@ -130,3 +130,5 @@ Subsystem       sftp    /usr/libexec/openssh/sftp-server
 #       X11Forwarding no
 #       AllowTcpForwarding no
 #       ForceCommand cvs server
+
+SetEnv ENV=/usr/libexec/openssh/load_developer_profile
