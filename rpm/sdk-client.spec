@@ -39,6 +39,7 @@ rm -rf %{buildroot}
 %post emul
 %systemd_post etc-mersdk-share.mount
 %systemd_post etc-ssh-authorized_keys.mount
+%systemd_post run-media-defaultuser-sdk.mount
 %systemd_post sdk-emulan.service
 %systemd_post sdk-refresh-repos.service
 %systemd_post sdk-restart-connman.service
@@ -48,6 +49,7 @@ rm -rf %{buildroot}
 %preun emul
 %systemd_preun etc-mersdk-share.mount
 %systemd_preun etc-ssh-authorized_keys.mount
+%systemd_preun run-media-defaultuser-sdk.mount
 %systemd_preun sdk-emulan.service
 %systemd_preun sdk-refresh-repos.service
 
@@ -63,6 +65,7 @@ rm -rf %{buildroot}
 %{_sysconfdir}/*
 %{_bindir}/sdk-shutdown
 %{_bindir}/sdk-setup-emulan
+%{_unitdir}/run-media-defaultuser-sdk.mount
 %{_unitdir}/sdk-emulan.service
 %{_unitdir}/sdk-refresh-repos.service
 %{_unitdir}/etc-mersdk-share.mount
