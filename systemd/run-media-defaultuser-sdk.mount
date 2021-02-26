@@ -1,0 +1,13 @@
+[Unit]
+Description=Virtual media device provided by the SDK
+
+[Mount]
+What=media
+Where=/run/media/defaultuser/sdk
+Type=vboxsf
+Options=rw,exec,uid=100000,gid=100000,fmode=644,dmode=755
+DirectoryMode=755
+TimeoutSec=90
+
+[Install]
+WantedBy=basic.target
