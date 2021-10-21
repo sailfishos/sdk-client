@@ -7,7 +7,7 @@ License:    GPLv2+
 BuildArch:  noarch
 URL:        https://github.com/sailfishos/sdk-client
 Source0:    %{name}-%{version}.tar.bz2
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 
 %description
 Tools to support the Sailfish OS Qt Creator
