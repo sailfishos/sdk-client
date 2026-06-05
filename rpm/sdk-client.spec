@@ -42,7 +42,6 @@ rm -rf %{buildroot}
 %systemd_post run-media-defaultuser-sdk.mount
 %systemd_post sdk-emulan.service
 %systemd_post sdk-refresh-repos.service
-%systemd_post sdk-restart-connman.service
 %systemd_post sshd.socket
 
 %preun
@@ -70,4 +69,3 @@ rm -rf %{buildroot}
 %{_unitdir}/sdk-refresh-repos.service
 %{_unitdir}/etc-mersdk-share.mount
 %{_unitdir}/etc-ssh-authorized_keys.mount
-%{_unitdir}/sdk-restart-connman.service
